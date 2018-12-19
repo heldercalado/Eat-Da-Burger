@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <div class="col-  mx-auto">
+            <img class="burger_image" src="./assets/img/burger.jpg" alt="" srcset="">
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <table>
+
+                {{#each results}}
+                {{#unless devoured}}
+
+                <tr>
+                    <td>{{burger_name}}</td>
+                    <form action="/devourburger" method="POST">
+                        <input type="hidden" id="custId" name="id" value="{{id}}">
+                        <td><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Eat</button></td>
+                    </form>
+                </tr>
+                {{/unless}}
+                {{/each}}
+            </table>
+        </div>
+        <div class="col-md-6">
+
+            <table>
+                {{#each results}}
+                {{#if devoured}}
+                <tr>
+                    <td>{{burger_name}}</td>
+                </tr>
+                {{/if}}
+                {{/each}}
+
+            </table>
+
+        </div>
+    </div>
+    <br>
+    <div class="row align-items-end">
+        <div class="col-">
+            <form class="form-inline" action="/addburger" method="POST">
+                <input class="form-control mr-sm-2" type="search" name="name" placeholder="Add Burger" aria-label="search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add</button>
+            </form>
+            <form action="/resetburgers" method="POST">
+                <input type="hidden" id="custId" name="id" value="{{id}}">
+                <td><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Reset Burgers</button></td>
+            </form>
+        </div>
+    </div>
+
+</div>
